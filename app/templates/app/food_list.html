@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}HealthyfyApp|Home{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        {%  if user.is_superuser %}
+        <table class="table table-bordered">
+            <tr>
+             <th>Sr.No</th>   
+             <th>Food Item</th>
+             <th>Carbs(gm)</th>
+             <th>Proteins(gm)</th>
+             <th>Fats(gm)</th>
+             <th>Calories(gm)</th>
+             <th>Edit</th>
+             <th>Remove</th>
+            </tr>
+            {% for x in object_list %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{x.name}}</td>
+                <td>{{x.carbs}}</td>
+                <td>{{x.protein}}</td>
+                <td>{{x.fats}}</td>
+                <td>{{x.calories}}</td>
+                <td><a href="/FoodUpdate/{{x.pk}}">Edit</a></td>
+                <td><a href="/FoodRemove/{{x.pk}}">Remove</a></td>
+            </tr>
+            {% endfor %}
+            
+        </table>
+        {% else %}
+        <center>
+        <h1>Calorie Tracker</h1>
+        </center>
+        <div class="col-md-6">
+            <label><b>Select Food Item</b></label>
+            <form method="post" action="/foodadd/" id="foodform">
+                {% csrf_token %}
+                <select name="food_consumed" id="food_consumed">
+                    {% for x in object_list %}
+                    <option>{{x.name}}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Add">
+            </form>
+        
+
+
+        {% endif %}
+    </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}HealthyfyApp|MyFoods{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <center>
+        <h1>Calorie Tracker</h1>
+        </center>
+        <div class="col-md-6">      
+            <label><b>Select Food Item</b></label>
+            <form method="post" action="" id="foodform">
+                {% csrf_token %}
+                <select name="food_consumed" id="food_consumed">
+                    {% for x in allfoods %}
+                    <option>{{x.name}}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Add">
+            </form>
+            <br>
+
+
+
+        <h3>Today's Consumption</h3>
+        <br>
+        <table class="table table-striped" id="table">
+            <tr>
+                <th>Food Item</th>
+                <th>Carbs(gm)</th>
+                <th>Protein(gm)</th>
+                <th>Fats(gm)</th>
+                <th>Calories(kcal)</th>
+            </tr>
+            {% for x in consumed_food %}
+            <tr>
+                <td>{{x.foodconsumed.name}}</td>
+                <td>{{x.foodconsumed.carbs}}</td>
+                <td>{{x.foodconsumed.protein}}</td>
+                <td>{{x.foodconsumed.fats}}</td>
+                <td>{{x.foodconsumed.calories}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+    </div>
+    </div>
+</div>
+{% endblock %}

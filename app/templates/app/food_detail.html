@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}HealthyfyApp|{{object.name}}{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <center>
+            <h1>{{object.name}} Details</h1>
+        </center>
+        <div class="col-md-6">
+        <ul>
+            <li>Carbs:{{object.carbs}}(gm)</li>
+            <li>Protein:{{object.protein}}(gm)</li>
+            <li>Fats:{{object.fats}}(gm)</li>
+            <li>Calories:{{object.calories}}(kcal)</li>
+        </ul>
+        <a href="/"><input type="button" value="Back"></a>
+        </div>
+    <div class="col-md-6">
+        <canvas id="chart" width="500" height="200"></canvas>
+    </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
+<script>
+let ctx = document.getElementById("chart").getContext("2d");
+let chart = new Chart(ctx, {
+  type: "bar",
+  data: {
+     labels: ["Carbs", "Protein", "Fats", "Calories"],
+     datasets: [
+        {
+          label: "Food Weightage",
+          backgroundColor: "#79AEC8",
+          borderColor: "#417690",
+          data: ["{{object.carbs}}", "{{object.protein}}", "{{object.fats}}", "{{object.calories}}"]
+        }
+     ]
+  },
+  options: {
+     title: {
+        text: "Gross Volume in 2020",
+        display: true
+     }
+  }
+});
+</script>
+
+
+
+
+{% endblock %}
+

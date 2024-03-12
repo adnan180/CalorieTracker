@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}HealthyfyApp|Home{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+<div class="col p-3">
+   <ul>
+    {% for x in allfood %}
+    <li><a href="FoodDetail/{{x.pk}}">{{x.name}}</a></li>
+    {% endfor %}
+</ul>
+    </div>  
+</div>
+</div>  
+{% endblock %}
