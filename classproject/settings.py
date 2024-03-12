@@ -20,7 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = "django-insecure-5tqkn&6mhlnh^a+pt9-4iyi*8f&n1ja69=3kn#8o+mtg6fy_u^"
+SECRET_KEY = "django-insecure-5tqkn&6mhlnh^a+pt9-4iyi*8f&n1ja69=3kn#8o+mtg6fy_u^"
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -138,5 +139,5 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_URL = "logout"
 LOGOUT_REDIRECT_URL = "/"
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ""
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ""
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "787184238484-26jfir3tka3gtbv24r25ft4f4a5a0ph2.apps.googleusercontent.com"
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "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"
